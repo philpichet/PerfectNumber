@@ -6,7 +6,7 @@
 	<body>
 		<!--  Input for asking the number of perfect numbers -->
 		<div>
-			<form id="select-quantity" action="" method="post">
+			<form id="select-quantity">
 				<label for="quantity">Combien de nombres parfait</label>
 				<input type="number" name="quantity" id="quantity">
 				<button type="submit">Afficher</button>
@@ -17,9 +17,11 @@
 		<!-- For display the list of perfect numbers -->
 		<div>
 			<h1>Liste des nombres parfaits</h1>
-			<ul class="perfect-list">
+			<ul id="perfect-list">
 				
 			</ul>
 		</div>
+
+		<script src="main.js"></script>
 	</body>
 </html>
