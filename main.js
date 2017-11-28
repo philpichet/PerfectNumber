@@ -9,9 +9,32 @@ form.addEventListenr("submit", function (event) {
 
 
 
-function isPrime(x) {
-	// Check is x is prime
-}
+var test = 1000;
+    var i = 1;
+    var premiers = Array();
+    var perfects = Array();
+    
+    
+            //un nb premier ne peut être divisible que par lui-même
+    function isprime()
+    {
+        for (i; i <= test; i++)
+                {
+                if (i == 1 || i == 2) 
+                    {
+                        premiers.push(i);
+                    }
+                racine = Math.sqrt(i);
+            
+                if (!Number.isInteger(racine))
+                    {
+                        premiers.push(i);
+                    }
+                     
+                    i++;
+                }
+        return premiers;
+    }
 
 
 function getPerfects(number) {
