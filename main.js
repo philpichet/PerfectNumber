@@ -34,9 +34,9 @@ function isPrime(x) {
 function getPerfects(number) {
 	// Create array for storage
 	var perfectNumbers = [];
-
+	var i = 2
 	// We make a boucle for the p value
-	for(i = 2; i <= 40; i++ ) {
+	while(true) {
 
 		first = Math.pow(2, i- 1); 
 		second = Math.pow(2, i) - 1;
@@ -51,16 +51,23 @@ function getPerfects(number) {
 			// we break the boucle
 			break
 		}
+		i++;
 	}
 	return perfectNumbers;
 }
 
 function displayPerfectList(perfectList) {
-
+	// We assure that ul is empty
+		while(ulElement.firstChild) {
+			ulElement.removeChild(ulElement.firstChild);
+		}
 	perfectList.forEach(function (perfectNumber) {
 		// We create a li element for content a perfect number and we display it in ul list
 		var liElement = document.createElement("li");
 		liElement.innerHTML = perfectNumber;
+
+		
+
 		ulElement.append(liElement);
 	} )
 }
