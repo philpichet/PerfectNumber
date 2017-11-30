@@ -25,9 +25,20 @@ form.addEventListener("submit", function (event) {
 
 
 function isPrime(x) {
-	// make the algorithm for check if x is prime
-	
-	return true
+	racine = Math.sqrt(x);
+        var b = 1;
+                    do {
+                        b++;
+                    } while (b <= racine && x%b != 0);
+                    
+                if (x == 2 && x%2 != 0 && !Number.isInteger(racine)) 
+                    {
+                        return true;  
+                    } else if(b > racine)
+		    {
+			return true;                  
+                    }
+        else return false;
 }
 
 
