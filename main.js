@@ -1,7 +1,8 @@
 
 var form = document.getElementById('select-quantity');
 var ulElement = document.getElementById('perfect-list');
-
+// Create array for storage
+var perfectNumbers = [];
 
 form.addEventListener("submit", function (event) {
 	event.preventDefault();
@@ -41,9 +42,12 @@ function isPrime(x) {
 
 function getPerfects(number) {
 
-// Create array for storage
-var perfectNumbers = [];
-	var i = 2
+	// If the perfectNumbers array have already the list needs we return this list
+	if(perfectNumbers.length >= number) {
+		return perfectNumbers.slice(0, number);
+	}
+	// I value was the last value or 2
+	var i = perfectNumbers.length > 0 ? perfectNumbers[perfectNumbers.length - 1 ][0] + 1 : 2; 
 	// We make a boucle for the p value
 	while(true) {
 
@@ -54,7 +58,7 @@ var perfectNumbers = [];
 		if(isPrime(i) && isPrime(second)){
 
 			// We store the number with key is the value of i
-			perfectNumbers.push(first * second)
+			perfectNumbers.push([i, first * second ])
 		}
 		// We have the number of perfect number
 		if(perfectNumbers.length == number) {
@@ -67,6 +71,10 @@ var perfectNumbers = [];
 }
 
 function displayPerfectList(perfectList) {
+	// If the ul list display more than need perfect numbers, we just remove the extra content
+	if(perfectList.length < ulElement.childNodes.length) {
+		ulElement.removeChild(ulElement.childNodes[ulElement.childNodes.length - 1])
+	}
 	// We assure that ul is empty
 		while(ulElement.firstChild) {
 			ulElement.removeChild(ulElement.firstChild);
@@ -74,8 +82,7 @@ function displayPerfectList(perfectList) {
 	perfectList.forEach(function (perfectNumber) {
 		// We create a li element for content a perfect number and we display it in ul list
 		var liElement = document.createElement("li");
-		liElement.innerHTML = perfectNumber;
+		liElement.innerHTML = perfectNumber[1];
 		ulElement.append(liElement);
 	} )
 }
-
